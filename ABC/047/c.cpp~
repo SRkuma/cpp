@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#define FOR(i,a,b) for(int i=(a);i<(b);++i)
+#define REP(i,n)  FOR(i,0,n)
+#define debug(x) cout << #x << " = " << x << endl;
+#define debret(x) debug(x) ; return 0;
+#define pb(x) push_back(x)
+#define MOD 1000000007
+
+using namespace std;
+
+int main(){
+
+    string str;
+
+    cin >> str;
+
+    int cntW = 0;
+    int cntB = 0;
+
+    REP(i,str.size()-1){
+
+        str[i] == 'W' ? cntW++ : cntB++;
+    }
+
+    cout << cntW << endl;
+    
+    return 0;
+}
