@@ -1,0 +1,131 @@
+#include <iostream>
+#include <stdio.h>
+#define FOR(i,a,b) for(long long int i =(a); i <(b);i++)
+#define REP(i,N)   FOR(i,0,N)
+#define debug(x)   cout << #x << " = " << x << endl;
+
+using namespace std;
+
+int isMakeDia[500][500];
+
+int getValue(int h,int w){
+
+    return isMakeDia[h][w];
+}
+
+int main(void){
+    int H,W,sizeOfDia;
+    
+    cin >> H >> W >> sizeOfDia;
+    char field[H][W];
+
+    int off = sizeOfDia -1;
+    REP(i,H){
+        REP(k,W){
+            cin >> field[i][k];
+            if(field[i][k] == 'x'){
+                isMakeDia[i][k] = -1;
+            }
+        }
+    }
+    int dx[4] = {0, -1, 0, 1};
+    int dy[4] = {1,  0,-1, 0};
+    
+    FOR(i,off,H-off){
+        FOR(k,off,W-off){
+            REP(l,4){
+                if(isMakeDia[i+dy[l]][k+dx[l]] == -1){
+                    isMakeDia[i][k] = -2;
+                }
+            }
+            cout << isMakeDia[i][k];
+        }
+        cout << endl;
+    }
+    
+    FOR(i,off,H-off){
+        FOR(k,off,W-off){
+            if(isMakeDia[i][k] == 0 || isMakeDia[i][k] == -2){
+                bool isNotMakeable = false;
+                bool downable = false;
+                bool upable = false;
+                bool leftable = false;
+                bool rightable = false;
+    
+                FOR(l,1,off+1){ // UP
+                    if(getValue(i-l,k) == -1){
+                        isMakeDia[i][k] = -2;
+                        isNotMakeable = true;
+                        break;
+                    }else if(getValue(i-l,k) == 1){
+                        upable = true;
+                        break;
+                    }
+                }
+                if(isNotMakeable){
+                    continue;
+                }else{
+                    upable = true;
+                }
+                
+                FOR(l,1,off+1){ // DOWN
+                    if(getValue(i+l,k) == -1){
+                        isMakeDia[i][k] = -2;
+                        isNotMakeable = true;
+                        break;
+                    }
+                }
+                if(isNotMakeable){
+                    continue;
+                }else{
+                    downable = true;
+                }
+                FOR(l,1,off+1){ // RIGHT
+                    if(getValue(i,k+l) == -1){
+                        isMakeDia[i][k] = -2;
+                        isNotMakeable = true;
+                        break;
+                    }
+                }
+                if(isNotMakeable){
+                    continue;
+                }else{
+                    rightable = true;
+                }
+                FOR(l,1,off+1){ // LEFT
+                    printf("isMakeDia[%d][%d] = %d\n",i,k-l,isMakeDia[i][k-l]);
+                    if(getValue(i,k-l) == -1){
+                        isMakeDia[i][k] = -2;
+                        isNotMakeable = true;
+                        break;
+                    }else if(getValue(i,k-l) == 1){
+                        leftable = true;
+                        break;
+                    }
+                }
+                if(isNotMakeable){
+                    continue;
+                }else{
+                    leftable = true;
+                }
+
+                if(upable && downable && rightable && leftable){
+                    isMakeDia[i][k] = 1;
+                }
+            }
+            
+        }
+
+    }
+    int ans = 0;
+    REP(i,H){
+        REP(k,W){
+            if(isMakeDia[i][k] == 1) ans++;
+            printf("%2d",isMakeDia[i][k]);
+        }
+        cout << endl;
+    }
+    debug(ans)
+    
+    return 0;
+}

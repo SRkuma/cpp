@@ -1,0 +1,83 @@
+#include <iostream>
+#include <stdio.h>
+#include <iomanip>
+#include <queue>
+
+#define FOR(i,a,b) for(long long int i =(a); i <(b);i++)
+#define REP(i,N)   FOR(i,0,N)
+#define debug(x)   cout << #x << " = " << x << endl;
+#define INF (int)1e+9
+using namespace std;
+
+long long board[11][11];
+long long  dp[11][11];
+
+int sx,sy;
+int gx,gy;
+int H,W;
+
+void printArr(int h, int w,long long arr[][11]){
+    
+    REP(i,h){
+        REP(k,w){
+            printf("%11d",arr[i][k]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+}
+
+long long Bfs(){
+    typedef pair<int,int> P;
+
+    int dx[4] = {1, 0,-1,0};
+    int dy[4] = {0, 1,0,-1};
+    queue<P> que;
+    REP(i,11){
+        REP(j,11){
+            dp[i][j] = INF;
+        }
+    }
+    que.push(P(sy,sx));
+    dp[sy][sx] = 0;
+    while(que.size()){
+        P p = que.front();
+        que.pop();
+        if(p.first == gy && p.second == gx) break;
+        REP(i,4){
+            int ny = p.first  + dy[i];
+            int nx = p.second + dx[i];
+            if(  0 <= ny && ny < H && 0 <= nx && nx < W ){
+                que.push(P(ny,nx));
+                dp[ny][nx] = dp[p.first][p.second] + board[ny][nx];
+            }
+        }
+    }
+    return dp[gy][gx];
+}
+
+int main(void){
+
+    int turn;
+    cin >> H >> W >> turn;
+    
+    REP(i,H){
+        REP(k,W){
+            char tmp;
+            cin >> tmp;
+            switch(tmp){
+            case 'S' : board[i][k] = 0;    sy = i; sx = k; break;
+            case 'G' : board[i][k] = turn; gy = i; gx = k; break;
+            case '.' : board[i][k] = 1; break;
+            case '#' : board[i][k] = INF; break;
+            default  : break;
+            }
+        }
+    }
+
+    printArr(H,W,board);
+    printArr(H,W,dp);
+    
+    return 0;
+}

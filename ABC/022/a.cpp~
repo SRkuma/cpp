@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main(void){
+
+    int day;
+    int initW;
+    int lowerW,upperW;
+
+    cin >> day >> lowerW >> upperW;
+    com >> initW;
+    
+
+    return 0;
+}

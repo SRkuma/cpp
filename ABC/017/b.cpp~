@@ -1,0 +1,26 @@
+#include <iostream>
+#define FOR(i,a,b) for(int i=(a);i<(b);++i)
+#define REP(i,n)  FOR(i,0,n)
+#define debug(x) cerr << #x << " = " << x << endl;
+using namespace std;
+
+int main(void){
+
+    string str;
+    cin >> str;
+
+    int last = str.size()-1;
+
+    if(str[last-1] == 'c' && str[last] =='h'){
+        cout << "YES"<< endl;
+    }else{
+        switch(str[last]){
+        case 'o' : cout << "YES" << endl; break;
+        case 'k' : cout << "YES" << endl; break;
+        case 'u' : cout << "YES" << endl; break;
+        default  : cout <<  "NO" << endl; break;
+        }
+    }
+
+    return 0;
+}

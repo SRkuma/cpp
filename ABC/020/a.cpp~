@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main(void){
+    swicth(cin>>){
+    case 1 : cout << "ABC" << endl;      break;
+    case 2 : cout << "chokudai" << endl; break;
+    default return 0;
+    }
+
+    return 0;
+}
