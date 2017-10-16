@@ -1,0 +1,13 @@
+#include<iostream>
+
+using namespace std;
+
+//図形sと図形cの数がそれぞれ与えられる
+//cを2つ組み合わせてsを作ることができる
+// "scc"がいくつ作れるかを出力する
+
+int main(void){
+
+
+    return 0;
+}
