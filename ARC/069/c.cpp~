@@ -1,0 +1,32 @@
+#include <iostream>
+
+#define FOR(i,a,b) for(long long int i = (a); i <(b);++i)
+#define REP(i,n) FOR(i,0,n)
+#define debug(x) cout << #x << " = " << x << endl;
+
+using namespace std;
+
+int main(void){
+
+    long long  S,C;
+
+    cin >> S >> C;
+
+    long long ans = 0;
+
+    long long idealC = S*2;
+
+    if(idealC <= C){
+        ans = S;
+        C = C -idealC;
+    }else{
+        ans = C / 2;
+        S = S - C/2;
+    }
+
+    ans += C / 3;
+
+    debug(ans)
+
+    return 0;
+}
