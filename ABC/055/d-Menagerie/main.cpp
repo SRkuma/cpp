@@ -1,5 +1,13 @@
 #include<iostream>
 
+typedef long long ll;
+
+#define FOR(i,a,b) for(ll i = (a);i < (b);++i)
+#define REP(i,n) FOR(i,0,n)
+
+#define debug(x) cout << #x << "=" << x << endl;
+#define maxN 100000
+
 using namespace std;
 //D. Menagerie
 
@@ -11,11 +19,6 @@ using namespace std;
 //動物の数 N と答えの文字列 s が与えられる
 //あり得る組み合わせを羊ならS、狼ならWで出力
 //組み合わせができない場合は-1を出力
-
-#define FOR(i,a,b) for(long long i =(a);i<(b);++i)
-#define REP(i,n) FOR(i,0,n)
-#define debug(x) cerr << #x << " = " << x << endl;
-#define maxN 100000
 
 int candidate[4][maxN];
 

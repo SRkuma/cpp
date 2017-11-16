@@ -1,4 +1,13 @@
-#include<iostream>
+#include <iostream>
+
+typedef long long ll;
+
+#define FOR(i,a,b) for(ll i = (a);i < (b);++i)
+#define REP(i,n) FOR(i,0,n)
+
+#define debug(x) cout << #x << "=" << x << endl;
+
+#define MOD (int)1e+9+7
 
 using namespace std;
 
@@ -10,10 +19,7 @@ using namespace std;
 
 //最終的なパワーを10^9+7で割ったあまりを求める
 
-#define MOD (int)(1e+9)+7
-#define debug(x) cout << #x << " = " << x << endl;
-
-long long fact(long long N){
+long long fact(long long  N){
 
     if(N == 0) return 1;
     long long res = N * fact(N-1);
@@ -23,10 +29,10 @@ long long fact(long long N){
 
 int main(void){
 
-    int  N;
-    cin >> N;
+  int N;
+  cin >> N;
 
-    cout << fact(N) << endl;
-
-    return 0;
+  cout << fact(N) << endl;
+    
+  return 0;
 }

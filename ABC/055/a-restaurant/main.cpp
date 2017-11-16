@@ -1,4 +1,11 @@
-#include<iostream>
+#include <iostream>
+
+typedef long long ll;
+
+#define FOR(i,a,b) for(ll i = (a);i < (b);++i)
+#define REP(i,n) FOR(i,0,n)
+
+#define debug(x) cout << #x << "=" << x << endl;
 
 using namespace std;
 
@@ -12,10 +19,10 @@ using namespace std;
 
 int calcReCush(int N){
 
-    int hoge = 15;
+    int eatNum = 15;
     int reCush = 200;
     
-    return (N / hoge) * reCush;
+    return (N / eatNum) * reCush;
 }
 
 int main(void){
