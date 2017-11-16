@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 #define FOR(i,a,b) for(int i=(a);i<(b);++i)
 #define REP(i,n)  FOR(i,0,n)
@@ -17,16 +18,16 @@ int main(void){                 // AOJ ALDS1_4_D
     REP(i,n) cin >> baggage[i];
     
     int right = 1e+9;
-    int left = 0;
+    int left = -1;
     
-    REP(i,1000){
+    while(abs(right-left) > 1){
         
-        int mid = (right+left) /2;
+        int mid = (right+left) / 2;
         
-        if(Check(mid,n,m,baggage) == true){
+        if(Check(mid,n,m,baggage)){
             right = mid;
         }else{
-            left = mid+1;
+            left = mid;
         }
         
     }
