@@ -6,14 +6,14 @@ using namespace std;
 
 long long int fibCnt = 0;
 long long int fastFibCnt = 0;
-long long int fastfib(int n,long long res,long long y){
+long long int fastfib(int n,long long res1,long long res2){
 
     fastFibCnt++;
     
-    if(n == 0) return res;
-    if(n == 1) return y;
+    if(n == 0) return res1;
+    if(n == 1) return res2;
 
-    return fastfib(n-1,res,res+y);
+    return fastfib(n-1,res2,res1+res2);
 }
 
 long long int fib(int n){
